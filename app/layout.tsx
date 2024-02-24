@@ -16,9 +16,9 @@ export default function RootLayout({
     <html lang="en">
       <body className="min-w-[350px]">
         <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
           enableSystem
+          attribute="class"
+          defaultTheme="dark"
           disableTransitionOnChange
         >
           {children}
