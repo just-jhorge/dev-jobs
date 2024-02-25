@@ -8,8 +8,6 @@ export const filterJobs = (formData: FormData) => {
 
   const { q, type, location, remote } = JobFilterSchema.parse(values);
 
-  console.log(q, type, location, remote);
-
   const searchParams = new URLSearchParams({
     ...(q && { q: q.trim() }),
     ...(type && { type }),
