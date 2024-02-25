@@ -22,23 +22,23 @@ export const JobCard = ({
   },
 }: JobItemProps) => {
   return (
-    <article className="flex gap-3 border rounded-lg p-5 hover:bg-muted/60">
+    <article className="flex gap-3 rounded-lg border p-5 hover:bg-muted/60">
       <Image
         src={companyLogoUrl || companyLogoPlaceholder}
         alt={`${companyName} logo`}
         width={100}
         height={100}
-        className="rounded-lg self-start lg:self-center"
+        className="self-start rounded-lg lg:self-center"
       />
       <div className="flex-grow space-y-3">
         <div>
-          <h2 className="text-base lg:text-lg font-medium">{title}</h2>
-          <p className="text-xs lg:text-sm text-muted-foreground">
+          <h2 className="text-base font-medium lg:text-lg">{title}</h2>
+          <p className="text-xs text-muted-foreground lg:text-sm">
             {companyName}
           </p>
         </div>
-        <div className="text-muted-foreground space-y-1 lg:space-y-0.5">
-          <p className="flex items-center gap-1.5 text-xs lg:text-sm sm:hidden">
+        <div className="space-y-1 text-muted-foreground lg:space-y-0.5">
+          <p className="flex items-center gap-1.5 text-xs sm:hidden lg:text-sm">
             <Briefcase size={16} className="shrink-0" />
             {type}
           </p>
@@ -54,13 +54,13 @@ export const JobCard = ({
             <Banknote size={16} className="shrink-0" />
             {formatMoney(salary)}
           </p>
-          <p className="flex items-center gap-1.5 text-xs lg:text-sm sm:hidden">
+          <p className="flex items-center gap-1.5 text-xs sm:hidden lg:text-sm">
             <Clock size={16} className="shrink-0" />
             {relativeDate(createdAt)}
           </p>
         </div>
       </div>
-      <div className="hidden sm:flex flex-col shrink-0 items-end justify-between">
+      <div className="hidden shrink-0 flex-col items-end justify-between sm:flex">
         <Badge>{type}</Badge>
         <span className="flex items-center gap-1.5 text-muted-foreground">
           <Clock size={16} />

@@ -1,9 +1,18 @@
 "use client";
 
 import * as z from "zod";
+import { X } from "lucide-react";
 import { useForm } from "react-hook-form";
+import Select from "@/components/ui/select";
+import { CreateJobSchema } from "@/schemas";
+import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import { draftToMarkdown } from "markdown-draft-js";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { JobTypes, LocationTypes } from "@/lib/job-types";
+import { LoadingButton } from "@/components/ui/loading-button";
+import LocationInput from "@/components/inputs/location-input";
+import RichTextEditor from "@/components/inputs/rich-text-editor";
 import {
   Form,
   FormField,
@@ -12,15 +21,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { CreateJobSchema } from "@/schemas";
-import Select from "@/components/ui/select";
-import { JobTypes, LocationTypes } from "@/lib/job-types";
-import LocationInput from "@/components/inputs/location-input";
-import { X } from "lucide-react";
-import { Label } from "@/components/ui/label";
-import RichTextEditor from "@/components/inputs/rich-text-editor";
-import { draftToMarkdown } from "markdown-draft-js";
-import { LoadingButton } from "@/components/ui/loading-button";
+import { createJob } from "@/actions/create-job";
 
 export const NewJobForm = () => {
   const form = useForm<z.infer<typeof CreateJobSchema>>({
@@ -39,7 +40,20 @@ export const NewJobForm = () => {
   });
 
   const onSubmit = async (values: z.infer<typeof CreateJobSchema>) => {
-    alert(JSON.stringify(values.applicationEmail, null, 2));
+    const formData = new FormData();
+
+    // Turning the CreateJobSchema to a FormData type
+    Object.entries(values).forEach(([key, value]) => {
+      if (value) {
+        formData.append(key, value);
+      }
+    });
+
+    try {
+      await createJob(formData);
+    } catch (error) {
+      alert("Something went wrong, please try again!");
+    }
   };
 
   return (

@@ -3,6 +3,7 @@ import { ThemeProvider } from "@/providers/theme-provider";
 
 import "@/styles/globals.css";
 import { Navbar } from "@/components/navigation/navbar";
+import { Footer } from "@/components/navigation/footer";
 
 export const metadata: Metadata = {
   title: {
@@ -23,11 +24,12 @@ export default function RootLayout({
         <ThemeProvider
           enableSystem
           attribute="class"
-          defaultTheme="dark"
+          defaultTheme="system"
           disableTransitionOnChange
         >
           <Navbar />
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
