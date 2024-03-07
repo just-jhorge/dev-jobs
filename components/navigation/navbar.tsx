@@ -13,10 +13,10 @@ export const Navbar = () => {
           <span className="text-xl font-bold tracking-tight">Dev Jobs</span>
         </Link>
         <div className="flex items-center gap-2">
+          <ModeToggle />
           <Button asChild>
             <Link href="/jobs/new">Post a job</Link>
           </Button>
-          <ModeToggle />
         </div>
       </nav>
     </header>
