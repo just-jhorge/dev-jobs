@@ -15,12 +15,12 @@ export default function Error({
   }, [error]);
 
   return (
-    <div>
+    <div className="container flex h-[calc(100dvh-8rem)] flex-col items-center justify-center text-center">
       <h2>Something went wrong!</h2>
       <button
         onClick={
           // Attempt to recover by trying to re-render the segment
-          () => reset()
+          () => location.reload()
         }
       >
         Try again

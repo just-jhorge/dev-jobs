@@ -1,7 +1,7 @@
 export const Footer = () => {
   return (
-    <footer className="border-t shadow-sm">
-      <div className="m-auto flex flex-col items-center justify-between gap-3 px-3 py-5">
+    <footer className="flex h-16 items-center justify-center border-t shadow-sm">
+      <div className="container flex items-center justify-between">
         <div className="flex w-full items-center justify-between">
           <div className="leading-tight">
             <h3 className="text-xl font-bold">Dev Jobs</h3>
@@ -15,11 +15,6 @@ export const Footer = () => {
             <li>Terms of Service</li>
             <li>Privacy Policy</li>
           </ul>
-        </div>
-        <div className="text-center">
-          <p className="text-muted-foreground">
-            &copy; {new Date().getFullYear()}. All rights reserved
-          </p>
         </div>
       </div>
     </footer>
