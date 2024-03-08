@@ -9,6 +9,7 @@ interface PageProps {
     type?: string;
     remote?: string;
     location?: string;
+    page?: string;
   };
 }
 
@@ -35,7 +36,7 @@ export function generateMetadata({
 }
 
 export default function Home({
-  searchParams: { q, type, remote, location },
+  searchParams: { q, type, remote, location, page },
 }: PageProps) {
   const filterValues: JobFilterValues = {
     q,
@@ -54,7 +55,10 @@ export default function Home({
       </div>
       <section className="flex flex-col gap-4 md:flex-row">
         <JobFilterSidebar defaultValues={filterValues} />
-        <JobResults filterValues={filterValues} />
+        <JobResults
+          filterValues={filterValues}
+          page={page ? parseInt(page) : undefined}
+        />
       </section>
     </main>
   );
